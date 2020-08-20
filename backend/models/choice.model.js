@@ -7,9 +7,9 @@ const choiceSchema = new Schema({
     tgname: { type: String, required: true },
     choice: { type: String, required: true },
 }, {
-    timestamps: true,
+    timestamps: true, collation: 'BotCallChoice'
 });
 
-const Choice = mongoose.model('Choice', choiceSchema);
+const Choice = mongoose.model('Choice', choiceSchema, 'BotCallChoice');
 
 module.exports = Choice;

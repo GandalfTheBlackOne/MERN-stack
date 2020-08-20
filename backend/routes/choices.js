@@ -1,14 +1,10 @@
 const router = require('express').Router();
-let Choice = require('../models/choice.model');
-let BotCallChoice = require('../models/BotCallChoice.model');
-let Exercise = require('../models/exercise.model');
-let User = require('../models/user.model');
-
-//ATLAS_URI=mongodb+srv://thomas:NhtKhfKa0U1D2TyQ@testchatbot.glo4f.mongodb.net/IWBuddy?retryWrites=true
+const Choice = require('../models/choice.model');
 
 router.route('/').get((req, res) => {
-    Exercise.find()
-        .then(choices => res.json(choices));
+    Choice.find({})
+        .then(choices => res.json(choices))
+        .catch(err => res.status(400).json('Error ' + err));
        
 });
 
@@ -50,5 +46,7 @@ router.route('/update/:id').post((req, res) => {
         })
         .catch(err => res.status(400).json('Error: ' + err));
 });
+
+
 
 module.exports = router;

@@ -58,10 +58,10 @@ export default class CreateChoice extends Component {
 
         console.log(choice);
 
-        axios.post('http://localhost:5000/exercises/add', choice)
+        axios.post('http://localhost:5000/choices/add', choice)
             .then(res => console.log(res.data));
 
-        window.location = '/';
+        //window.location = '/';
     }
 
     render() {
@@ -69,50 +69,26 @@ export default class CreateChoice extends Component {
             <div>
                 <h3>Create New Choices</h3>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>TGname on list: </label>
-                        <select ref="tgnameInput"
-                            required
-                            className="form-control"
-                            value={this.state.tgname}
-                            onChange={this.onChangeTGname}>
-                            {
-                                this.state.tgnames.map(function (tgname) {
-                                    return <option
-                                        key={tgname}
-                                        value={tgname}>{tgname}
-                                    </option>;
-                                })
-                            }
-                        </select>
-                    </div>
+
                     <div className="form-group">
                         <label>TGname on text: </label>
                         <input type="text"
                             required
                             className="form-control"
                             value={this.state.tgname}
-                            //onChange={this.onChangeTGname}
+                            onChange={this.onChangeTGname}
                         />
                     </div>
                     <div className="form-group">
-                        <label>Choices on list: </label>
-                        <select ref="choiceInput"
+                        <label>Choice: </label>
+                        <input type="text"
                             required
                             className="form-control"
                             value={this.state.choice}
-                            onChange={this.onChangeChoice}>
-                            {
-                                this.state.choices.map(function (choice) {
-                                    return <option
-                                        key={choice}
-                                        value={choice}>{choice}
-                                    </option>;
-                                })
-                            }
-                        </select>
+                            onChange={this.onChangeChoice}
+                        />
                     </div>
-
+                    
                     <div className="form-group">
                         <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
                     </div>
